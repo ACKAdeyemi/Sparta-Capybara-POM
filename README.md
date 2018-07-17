@@ -2,7 +2,7 @@
 
 #### Task:
 
-To create a Page Object Model using Capybara, create an automated user journey and test for expected failures.
+To create a Page Object Model using Capybara, create an automated user journey through a website and test for expected failures.
 
 This task makes use of:
 

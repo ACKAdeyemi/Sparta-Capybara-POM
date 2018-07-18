@@ -32,7 +32,7 @@ describe "Testing the BBC Registration" do
       @bbc_site.bbc_registration.submit_registration
       expect(@bbc_site.bbc_registration.verify_reg).to be true
       expect(@bbc_site.bbc_registration.confirm_register_tag).to eq 'BBC – Register – thank you'
-      @bbc_site.bbc_registration.wait
+      @bbc_site.tab_control.wait(2)
     end
 
   end

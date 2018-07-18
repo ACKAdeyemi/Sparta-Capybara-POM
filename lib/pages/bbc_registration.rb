@@ -82,8 +82,4 @@ class BBC_Registration
     page.find('title').text
   end
 
-  def wait
-    sleep 2
-  end
-
 end

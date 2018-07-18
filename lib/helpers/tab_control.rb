@@ -21,4 +21,8 @@ class TabControl
     page.driver.browser.close
   end
 
+  def wait(num)
+    sleep num
+  end
+
 end

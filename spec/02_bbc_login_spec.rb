@@ -112,7 +112,7 @@ describe "Testing the BBC Login" do
       expect(@bbc_site.login_fail_methods.incorrect_account_password_error_div).to eq true
 
       expect(@bbc_site.login_fail_methods.incorrect_account_password_error_message).to eq 'Uh oh, that password doesn\'t match that account. Please try again.'
-      @bbc_site.bbc_registration.wait
+      @bbc_site.tab_control.wait(4)
     end
 
   end

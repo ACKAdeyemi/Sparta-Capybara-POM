@@ -25,7 +25,7 @@ class BBC_Login
 
   def submit_log_in
     click_button SIGN_IN_BUTTON
-    sleep 10
+    sleep 3
   end
 
 end

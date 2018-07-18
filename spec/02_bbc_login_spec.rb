@@ -111,7 +111,20 @@ describe "Testing the BBC Login" do
 
       expect(@bbc_site.login_fail_methods.incorrect_account_password_error_div).to eq true
 
-      expect(@bbc_site.login_fail_methods.incorrect_account_password_error_message).to eq 'Uh oh, that password doesn\'t match that account. Please try again.'
+      expect(@bbc_site.login_fail_methods.incorrect_account_password_error_message).to eq 'Uh oh, that password doesn’t match that account. Please try again.'
+    end
+
+    it "should correctly display an error message for invlaid email" do
+      @bbc_site.bbc_homepage.visit_home_page
+      @bbc_site.bbc_homepage.click_sign_in_link
+      @bbc_site.bbc_login.fill_email('a@a')
+      @bbc_site.bbc_login.fill_password('1234abcd')
+      @bbc_site.bbc_login.submit_log_in
+
+      expect(@bbc_site.login_fail_methods.invalid_email_error_div).to eq true
+
+      expect(@bbc_site.login_fail_methods.invalid_email_error_message).to eq 'Sorry, that email doesn’t look right. Please check it\'s a proper email.'
+
       @bbc_site.tab_control.wait(4)
     end
 

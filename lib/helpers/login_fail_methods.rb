@@ -61,4 +61,13 @@ class LoginFailMethod
     find(PASSWORD_MESSAGE_DIV).text
   end
 
+  # 7 - INVALID EMAIL ENTERED
+  def invalid_email_error_div
+    page.has_selector?(EMAIL_MESSAGE_DIV)
+  end
+
+  def invalid_email_error_message
+    find(EMAIL_MESSAGE_DIV).text
+  end
+
 end

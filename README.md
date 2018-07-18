@@ -2,23 +2,30 @@
 
 #### Task:
 
-To create a Page Object Model using Capybara, create an automated user journey through a website and test for expected failures.
+To create a Page Object Model using Capybara, creating an automated user journey through a website and test for expected failures.
 
 This task makes use of:
 
 * Ruby
 * Capybara (for web automation)
 * RSpec (for testing)
+* [Minute Inbox](https://www.minuteinbox.com)
 
 **How to Download** - click 'clone or download' button, download a zip of our project, unzip, open the index.html and enjoy.
 
 #### Challenges:
-I found it...
+Something that I thought to be interesting was to add dynamic email functionality to ease the automation process rather than having to constantly change the email used to prove that the registration process works, getting locked out of account due to too many incorrect log in attempts, etc.
 
-### <p align="center"> Example of Challenge or Solutiton </p>
+I knew I'd need to be able to switch tabs as I'd need the email taken from the Minute Inbox tab to remain, so I conducted some research via Google and came to the following solution:
 
-```Ruby
-# Code Snippet from my tab_control.rb
+### <p align="center"> Class created with methods to control tabs in one window </p>
+
+
+
+```ruby
+
+# Code Snippet of methods from my TabControl class (in tab_control.rb)
+
 require 'capybara/dsl'
 
 class TabControl
@@ -42,16 +49,35 @@ class TabControl
     page.driver.browser.close
   end
 
+  def wait(num)
+    sleep num
+  end
+
 end
 ```
 
-![Image 1](public/images/example.png)
+### <p align="center"> The method below is used in conjunction with the methods above to control what happens at particular stages through the user journey </p>
 
-![Image 2](public/images/example.png)
+```ruby
+# Code snippet of method in used within BBC_Homepage class (in bbc_homepage.rb)
 
-The...
+# constants
+HOMEPAGE_URL = 'http://www.bbc.co.uk'
+
+def visit_home_page
+  window = page.driver.browser.window_handles
+
+  if window.size < 2
+    page.driver.open_new_window
+    page.switch_to_window(page.windows[1])
+  end
+
+  visit(HOMEPAGE_URL)
+  sleep 2
+end
+```
 
 <hr>
 
 #### Summary:
-I...
+I am quite pleased with this homework task as it enabled me to go above and beyond what was required allowing me to push myself to learn new things and implement something that functions well and makes life easier.
